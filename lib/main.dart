@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
   Future<String> generateAgoraToken() async {
     // Generate token using your preferred method, for example, from a backend server
     // For demonstration purposes, we'll just return a dummy token
-    return "test" /*getRandomString(10)*/;
+    return  "007eJxTYDDcccThnZEbM7s+f7vo+zqGlHD18iU/vwg7vb6RZ+r89oUCQ5JlYlqqobGFaapJoompUUpSokGiYXJKmqlRcrJ5Ukry1mzJtIZARoaliR7MjAwQCOKzMiTmZhZnMDAAAA2RHyE=";
   }
 
   Future<void> setupVoiceSDKEngine() async {

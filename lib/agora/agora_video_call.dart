@@ -1,0 +1,2 @@
+String agoraAppId ="b9afe1385e4a452dba0a1cdf52cc7bdc";
+String tempToken = "007eJxTYDDcccThnZEbM7s+f7vo+zqGlHD18iU/vwg7vb6RZ+r89oUCQ5JlYlqqobGFaapJoompUUpSokGiYXJKmqlRcrJ5Ukry1mzJtIZARoaliR7MjAwQCOKzMiTmZhZnMDAAAA2RHyE=";
