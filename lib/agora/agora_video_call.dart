@@ -11,7 +11,8 @@ import 'package:permission_handler/permission_handler.dart';
 const String appId = "06e8476e8f074f539f05112e02d048b1";
 
 class AgoraVideoCallExa extends StatefulWidget {
-  const AgoraVideoCallExa({Key? key}) : super(key: key);
+  int? remoteUid;
+   AgoraVideoCallExa({required int remoteUid,Key? key}) : super(key: key);
 
   @override
   _AgoraVideoCallExaState createState() => _AgoraVideoCallExaState();
@@ -23,7 +24,7 @@ class _AgoraVideoCallExaState extends State<AgoraVideoCallExa> {
 
   int uid = 0; // uid of the local user
 
-  int? _remoteUid; // uid of the remote user
+  // uid of the remote user
   bool _isJoined = false; // Indicates if the local user has joined the channel
   late RtcEngine agoraEngine; // Agora engine instance
 
@@ -81,14 +82,14 @@ class _AgoraVideoCallExaState extends State<AgoraVideoCallExa> {
         onUserJoined: (RtcConnection connection, int remoteUid, int elapsed) {
           showMessage("Remote user uid:$remoteUid joined the channel");
           setState(() {
-            _remoteUid = remoteUid;
+            widget.remoteUid = remoteUid;
           });
         },
         onUserOffline: (RtcConnection connection, int remoteUid,
             UserOfflineReasonType reason) {
           showMessage("Remote user uid:$remoteUid left the channel");
           setState(() {
-            _remoteUid = null;
+            widget.remoteUid = null;
           });
         },
       ),
@@ -119,7 +120,7 @@ class _AgoraVideoCallExaState extends State<AgoraVideoCallExa> {
   void leave() {
     setState(() {
       _isJoined = false;
-      _remoteUid = null;
+      widget.remoteUid = null;
     });
     agoraEngine.leaveChannel();
   }
@@ -170,10 +171,10 @@ class _AgoraVideoCallExaState extends State<AgoraVideoCallExa> {
 
     if (!_isJoined)
       statusText = 'Join a channel';
-    else if (_remoteUid == null)
+    else if (widget.remoteUid == null)
       statusText = 'Waiting for a remote user to join...';
     else
-      statusText = 'Connected to remote user, uid:$_remoteUid';
+      statusText = 'Connected to remote user, uid:${widget.remoteUid}';
 
     return Text(
       statusText,
