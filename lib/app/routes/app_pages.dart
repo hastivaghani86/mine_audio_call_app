@@ -33,11 +33,11 @@ class AppPages {
       page: () => const WelcomeView(),
       binding: WelcomeBinding(),
     ),
-    GetPage(
-      name: _Paths.LOGIN_USER,
-      page: () => const LoginUserView(),
-      binding: LoginUserBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.LOGIN_USER,
+    //   page: () => const LoginUserView(),
+    //   binding: LoginUserBinding(),
+    // ),
     GetPage(
       name: _Paths.HOME,
       page: () => const HomeView(),

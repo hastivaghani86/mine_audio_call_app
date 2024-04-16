@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:mine/utils/app_text_field.dart';
 
 import '../controllers/login_user_controller.dart';
 
@@ -10,14 +11,15 @@ class LoginUserView extends GetView<LoginUserController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('LoginUserView'),
+        title: const Text('Login'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'LoginUserView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Column(
+        children: [
+          AppTextField(
+
+          )
+        ],
       ),
     );
   }

@@ -1,4 +1,4 @@
 class StorageKeys{
-  static const role = "Role";
-  static const isLogin = "IsLogin";
+  // static const role = "Role";
+  static const uid = "UserUid" , isAdmin = "Admin";
 }

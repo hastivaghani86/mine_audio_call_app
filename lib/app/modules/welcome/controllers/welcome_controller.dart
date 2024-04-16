@@ -9,12 +9,14 @@ class WelcomeController extends GetxController {
   @override
   void onInit() {
     Future.delayed(const Duration(milliseconds: 10), () {
-      print("READ ${box.read(StorageKeys.role)}");
-      if (box.read(StorageKeys.role) != null) {
-        if (box.read(StorageKeys.role) == "Admin" && box.read(StorageKeys.isLogin)) {
+      print("READ ${box.read(StorageKeys.isAdmin)}");
+      if (box.read(StorageKeys.isAdmin) != null) {
+        if (box.read(StorageKeys.isAdmin) == true && box.read(StorageKeys.uid) != null) {
           Get.offAllNamed(Routes.HOME);
-        } else if (box.read(StorageKeys.role) == "User") {
+        } else if (box.read(StorageKeys.isAdmin) == false && box.read(StorageKeys.uid) != null) {
           Get.offAllNamed(Routes.USER_HOME);
+        }else{
+          Get.snackbar("ERROR!", "Something went wrong");
         }
       }
     });

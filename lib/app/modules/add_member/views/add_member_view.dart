@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:mine/utils/app_button.dart';
+import 'package:mine/utils/app_color.dart';
 import 'package:mine/utils/app_text_field.dart';
 
 import '../../../../utils/app_size_config.dart';
@@ -24,60 +25,58 @@ class AddMemberView extends GetWidget<AddMemberController> {
               height: 4.0,
             ),
           )),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Space.height(20),
-            const Text(
-              "Member Id",
-              style: TextStyle(fontSize: 18),
-            ),
-            AppTextField(
-              controller: controller.memberIdController.value,
-              hintText: "Member Id",
-            ),
-            Space.height(20),
-            const Text(
-              "Name",
-              style: TextStyle(fontSize: 18),
-            ),
-            AppTextField(
-              controller: controller.nameController.value,
-              hintText: "Name",
-            ),
-            Space.height(20),
-            const Text(
-              "Number",
-              style: TextStyle(fontSize: 18),
-            ),
-            AppTextField(
-              controller: controller.numberController.value,
-              hintText: "Number",
-            ),
-            Space.height(50),
-            AppButton(
-                btnText: "Add Member",
-                onTap: () {
-                  FirebaseFirestore.instance
-                      .collection("users")
-                      .doc(controller.memberIdController.value.text
-                          .trim()
-                          .toString())
-                      .set({
-                    "id": controller.memberIdController.value.text
-                        .trim()
-                        .toString(),
-                    "name": controller.nameController.value.text.trim(),
-                    "number": controller.numberController.value.text.toString(),
-                    "showId": []
-                  });
-                }),
-          ],
-        ),
-      ),
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("users").snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return const Text('Something went wrong');
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+
+            return ListView.builder(
+                shrinkWrap: true,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  var userData = snapshot.data!.docs[index].data();
+                  return InkWell(
+                    onTap: () {
+
+                    },
+                    child:Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(15),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 5),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                          const BorderRadius.all(Radius.circular(12)),
+                          border: Border.all()),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CircleAvatar(
+                            radius: 20,
+                            backgroundColor:
+                            AppColor.primaryColor.withOpacity(0.5),
+                            child: Text(
+                                (userData as Map<String, dynamic>)["name"][0]),
+                          ),
+                          Space.width(20),
+                          Expanded(
+                            child: Text((userData)["name"] ?? ""),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                });
+          }),
     );
   }
 }

@@ -7,6 +7,8 @@ import 'package:mine/utils/app_key_storage.dart';
 
 import '../../../../utils/app_color.dart';
 
+RxBool isAdmin = false.obs;
+
 class LoginController extends GetxController {
   GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
   final RxBool isVisible = false.obs;
@@ -25,9 +27,13 @@ class LoginController extends GetxController {
           .then((value) {
         if (value == "Success") {
           isLoading.value = false;
-          box.write(StorageKeys.role, "Admin");
-          box.write(StorageKeys.isLogin, true);
-          Get.toNamed(Routes.HOME);
+          box.write(StorageKeys.isAdmin, isAdmin.value);
+
+          if (isAdmin.value) {
+            Get.offAllNamed(Routes.HOME);
+          } else {
+            Get.offAllNamed(Routes.USER_HOME);
+          }
         } else {
           isLoading.value = false;
           Get.snackbar("ERROR!", value ?? "Something went wrong",
@@ -47,12 +53,16 @@ class LoginController extends GetxController {
           .then((value) {
         if (value == "Success") {
           isLoading.value = false;
-          box.write(StorageKeys.role, "Admin");
-          box.write(StorageKeys.isLogin, true);
-          Get.toNamed(Routes.HOME);
+          box.write(StorageKeys.isAdmin, isAdmin.value);
+
+          if (isAdmin.value) {
+            Get.offAllNamed(Routes.HOME);
+          } else {
+            Get.offAllNamed(Routes.USER_HOME);
+          }
         } else {
           isLoading.value = false;
-          Get.snackbar("ERROR!", value ?? "Something went wrong",
+          Get.snackbar("ERFROR!", value ?? "Something went wrong",
               colorText: AppColor.white, backgroundColor: Colors.redAccent);
         }
       });

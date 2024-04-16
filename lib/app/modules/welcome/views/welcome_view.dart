@@ -5,6 +5,7 @@ import 'package:mine/utils/app_button.dart';
 import 'package:mine/utils/app_size_config.dart';
 
 import '../../../routes/app_pages.dart';
+import '../../login/controllers/login_controller.dart';
 import '../controllers/welcome_controller.dart';
 
 class WelcomeView extends GetWidget<WelcomeController> {
@@ -34,6 +35,7 @@ class WelcomeView extends GetWidget<WelcomeController> {
             AppButton(
               btnText: "Continue as Admin",
               onTap: () {
+                isAdmin.value =  true;
                 Get.toNamed(Routes.LOGIN);
               },
             ),
@@ -41,7 +43,9 @@ class WelcomeView extends GetWidget<WelcomeController> {
             AppButton(
               btnText: "Continue as User",
               onTap: () {
-                Get.toNamed(Routes.LOGIN_USER);
+                // Get.toNamed(Routes.LOGIN_USER);
+                isAdmin.value =  false;
+                Get.toNamed(Routes.LOGIN);
               },
             )
           ],

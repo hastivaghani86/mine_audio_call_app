@@ -69,15 +69,7 @@ class AdminUserWiseNumberView extends GetView<AdminUserWiseNumberController> {
                               ),
                               Space.width(20),
                               Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text((userData)["name"] ?? ""),
-                                    Text("${userData["number"]}"),
-                                  ],
-                                ),
+                                child: Text((userData)["name"] ?? ""),
                               ),
                               !(containsIds.contains((userData)["id"]))
                                   ? InkWell(
@@ -120,7 +112,7 @@ class AdminUserWiseNumberView extends GetView<AdminUserWiseNumberController> {
                                   : InkWell(
                                       onTap: () async {
                                         // print("====> $docId ${userData["showId"]} ==> ${(userData)["id"]} ");
-                                        // FirebaseFirestore.instance.collection("users").doc(docId).update(
+                                        // Firebase Firestore.instance.collection("users").doc(docId).update(
                                         //     {"showId":userData["showId"].add((userData)["id"])});
                                         print("Adding ID: ${(userData)["id"]}");
                                         String newId = (userData)[
