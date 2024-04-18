@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mine/agora/agora_video_call.dart';
+import 'package:mine/app/modules/zego_audio_call/views/zego_audio_call_view.dart';
 import 'package:mine/services/authentication_service.dart';
 import '../../../../utils/app_color.dart';
 import '../../../../utils/app_size_config.dart';
@@ -81,7 +82,8 @@ class UserHomeView extends GetWidget<UserHomeController> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(()=>AgoraVideoCallExa(remoteUid: (userData)["id"],));
+                            Get.to(()=>ZegoAudioCallView((userData)["id"], (userData)["name"], "test"));
+                            // Get.to(()=>AgoraVideoCallExa(remoteUid: /*(userData)["id"]*/123,));
                             // Get.toNamed(Routes.CALLING);
                           },
                           child: Container(alignment: Alignment.center,

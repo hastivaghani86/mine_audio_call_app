@@ -11,6 +11,7 @@ abstract class Routes {
   static const USER_HOME = _Paths.USER_HOME;
   static const CALLING = _Paths.CALLING;
   static const ADD_MEMBER = _Paths.ADD_MEMBER;
+  static const ZEGO_AUDIO_CALL = _Paths.ZEGO_AUDIO_CALL;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const USER_HOME = '/user-home';
   static const CALLING = '/calling';
   static const ADD_MEMBER = '/add-member';
+  static const ZEGO_AUDIO_CALL = '/zego-audio-call';
 }

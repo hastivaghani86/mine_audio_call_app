@@ -14,6 +14,8 @@ import '../modules/user_home/bindings/user_home_binding.dart';
 import '../modules/user_home/views/user_home_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
+import '../modules/zego_audio_call/bindings/zego_audio_call_binding.dart';
+import '../modules/zego_audio_call/views/zego_audio_call_view.dart';
 
 part 'app_routes.dart';
 
@@ -63,5 +65,10 @@ class AppPages {
       page: () => const AddMemberView(),
       binding: AddMemberBinding(),
     ),
+    // GetPage(
+    //   name: _Paths.ZEGO_AUDIO_CALL,
+    //   page: () => const ZegoAudioCallView(),
+    //   binding: ZegoAudioCallBinding(),
+    // ),
   ];
 }

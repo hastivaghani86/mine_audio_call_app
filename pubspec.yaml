@@ -43,6 +43,7 @@ dependencies:
   firebase_auth: ^4.19.1
   cloud_firestore: ^4.16.1
   get_storage: ^2.1.1
+  zego_uikit_prebuilt_call:
 #  zego_uikit_prebuilt_call: ^4.7.3
 
 

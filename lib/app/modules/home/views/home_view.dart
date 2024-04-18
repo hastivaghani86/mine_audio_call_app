@@ -7,8 +7,10 @@ import 'package:mine/app/routes/app_pages.dart';
 import 'package:mine/services/authentication_service.dart';
 import 'package:mine/utils/app_key_storage.dart';
 import 'package:mine/utils/app_size_config.dart';
+import '../../../../agora/agora_video_call.dart';
 import '../../../../main.dart';
 import '../../../../utils/app_color.dart';
+import '../../zego_audio_call/views/zego_audio_call_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -115,7 +117,9 @@ class HomeView extends GetView<HomeController> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Get.toNamed(Routes.CALLING);
+                                    Get.to(()=>ZegoAudioCallView((userData)["id"], (userData)["name"], "test"));
+                                    // Get.to(()=>AgoraVideoCallExa(remoteUid: /*(userData)["id"]*/123,));
+                                    // Get.toNamed(Routes.CALLING);
                                   },
                                   child: Container(alignment: Alignment.center,
                                     width: 50,
@@ -126,7 +130,7 @@ class HomeView extends GetView<HomeController> {
                                         shape: BoxShape.circle),
                                     child: const Icon(Icons.call),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
