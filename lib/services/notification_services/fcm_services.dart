@@ -21,7 +21,7 @@ class FCMService extends GetxService {
     if (!_initialized) {
       initFCM();
       AndroidInitializationSettings initializationSettingsAndroid =
-      const AndroidInitializationSettings("@drawable/mipmap");
+      const AndroidInitializationSettings("@mipmap/ic_launcher");
       const DarwinInitializationSettings initializationSettingsIOS = DarwinInitializationSettings(
         requestSoundPermission: true,
         requestBadgePermission: true,
@@ -95,7 +95,7 @@ class FCMService extends GetxService {
               channel.id,
               channel.name,
               channelDescription: channel.description,
-              icon: "@drawable/mipmap",
+              icon: "@mipmap/ic_launcher",
               sound: RawResourceAndroidNotificationSound("ringtone"),
 
             ),

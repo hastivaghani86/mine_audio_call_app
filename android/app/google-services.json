@@ -1,94 +1,26 @@
 {
   "project_info": {
-    "project_number": "781035239837",
-    "project_id": "chatapp-398cb",
-    "storage_bucket": "chatapp-398cb.appspot.com"
+    "project_number": "401704779298",
+    "project_id": "mine-audio",
+    "storage_bucket": "mine-audio.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:781035239837:android:b25fdf52db79dde5c01774",
-        "android_client_info": {
-          "package_name": "com.chat.chatapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "781035239837-j6pf9o2710vfof1s3uumn3n66tt1t4m5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBjBgaJ1VfWiDgFuaa35jT-RIQajxx6LwQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "781035239837-j6pf9o2710vfof1s3uumn3n66tt1t4m5.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:781035239837:android:e0ef5eb7259a2b67c01774",
-        "android_client_info": {
-          "package_name": "com.example.chatapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "781035239837-j6pf9o2710vfof1s3uumn3n66tt1t4m5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBjBgaJ1VfWiDgFuaa35jT-RIQajxx6LwQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "781035239837-j6pf9o2710vfof1s3uumn3n66tt1t4m5.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:781035239837:android:62434696c80ba54cc01774",
+        "mobilesdk_app_id": "1:401704779298:android:608217ceff8a8eedd8d47b",
         "android_client_info": {
           "package_name": "com.mine.app.mine"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "781035239837-j6pf9o2710vfof1s3uumn3n66tt1t4m5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBjBgaJ1VfWiDgFuaa35jT-RIQajxx6LwQ"
+          "current_key": "AIzaSyAbZjZNx9n7BZU_NaPg-KU3p9Efe8szScw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "781035239837-j6pf9o2710vfof1s3uumn3n66tt1t4m5.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
