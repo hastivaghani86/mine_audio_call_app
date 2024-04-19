@@ -88,7 +88,7 @@ class UserHomeView extends GetWidget<UserHomeController> {
                             onTap: () {
 
                               sendFcmMessage((userData)["fcm"], "Calling From", (userData)["name"]);
-                              Get.to(()=>ZegoAudioCallView((userData)["id"], (userData)["name"], "test"));
+                              Get.to(()=>ZegoAudioCallView((userData)["id"], (userData)["name"]));
                               // Get.to(()=>AgoraVideoCallExa(remoteUid: /*(userData)["id"]*/123,));
                               // Get.toNamed(Routes.CALLING);
                             },
