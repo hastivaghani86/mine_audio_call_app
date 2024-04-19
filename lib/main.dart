@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mine/app/routes/app_pages.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:mine/services/notification_services/fcm_services.dart';
 
 const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
 Random _rnd = Random();
@@ -17,6 +18,7 @@ Future<void> main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FCMService().init();
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: AppPages.INITIAL,

@@ -115,7 +115,46 @@ class LoginView extends GetView<LoginController> {
                             // bcPadding: 16,
                           ),
                         ),
+                        Obx(() => isAdmin.value==false ?SizedBox():                        Space.height(20),
+                        ),
+                        Obx(
+                                () =>isAdmin.value==false ?SizedBox():  AppTextField(
+                            // keyBoardTypeEnter: TextInputType.text,
+                            textCapitalization: TextCapitalization.none,
+                            controller: controller.adminKeyController.value,
+                            hintText: "Enter Admin Secret",
+                            needValidation: true,
+                            // isPassWordValidation: true,
+                            validationMessage: "Admin Secret",
+                            // prefixIco: Padding(
+                            //   padding: const EdgeInsets.symmetric(vertical: 14),
+                            //   child: Image(
+                            //     image: AssetImage(AppImage.password),
+                            //     height: MySize.size16,
+                            //     width: MySize.size14,
+                            //   ),
+                            // ),
+                            // obscureText: controller.isVisible1.value,
+                            maxLines: 1,
+                            // iconButton: InkWell(
+                            //   onTap: () {
+                            //     // controller.isVisible1.value = !controller.isVisible1.value;
+                            //     //setState(() {});
+                            //   },
+                            //   child: Icon(
+                            //     !controller.isVisible1.value
+                            //         ? Icons.visibility_off_outlined
+                            //         : Icons.visibility_outlined,
+                            //     color: AppColor.grey,
+                            //     size: MySize.size26,
+                            //   ),
+                            // ),
+                            // tcPadding: 16,
+                            // bcPadding: 16,
+                          ),
+                        ),
                         Space.height(38),
+
                         AppButton(
                             btnText: "Login",
                             btnTxtColor: AppColor.white,

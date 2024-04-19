@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:mine/app/routes/app_pages.dart';
 import 'package:mine/main.dart';
@@ -15,11 +16,12 @@ class AuthService {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
-      ).then((value) {
+      ).then((value)async {
+       String? fcmToken = await FirebaseMessaging.instance.getToken();
         box.write(StorageKeys.uid, value.user!.uid);
         log("USER UID : ${value.user!.uid}");
         FirebaseFirestore.instance.collection("users").doc(value.user!.uid).set(
-            {"id":value.user!.uid,"name":email,"showId":[]});
+            {"id":value.user!.uid,"name":email,"showId":[],"fcm":fcmToken});
       });
       return 'Success';
     } on FirebaseAuthException catch (e) {
@@ -43,8 +45,13 @@ class AuthService {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
-      ).then((value) {
+      ).then((value)async {
+        String? fcmToken = await FirebaseMessaging.instance.getToken();
         box.write(StorageKeys.uid, value.user!.uid);
+        log("USER UID : ${value.user!.uid}");
+        FirebaseFirestore.instance.collection("users").doc(value.user!.uid).update(
+            {"fcm":fcmToken});
+
       });
       return 'Success';
     } on FirebaseAuthException catch (e) {

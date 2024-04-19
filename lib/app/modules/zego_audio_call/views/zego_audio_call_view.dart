@@ -1,41 +1,66 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:mine/utils/all_keys.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 
-import '../controllers/zego_audio_call_controller.dart';
 
-class ZegoAudioCallView extends GetView<ZegoAudioCallController> {
+class ZegoAudioCallView extends StatefulWidget {
   final String uid;
   final String name;
   final String roomId;
   const ZegoAudioCallView(this.uid, this.name, this.roomId, {Key? key}) : super(key: key);
+
+  @override
+  _ZegoAudioCallViewState createState() => _ZegoAudioCallViewState();
+}
+
+class _ZegoAudioCallViewState extends State<ZegoAudioCallView> with WidgetsBindingObserver {
+  // ZegoAudioCallController controller = Get.find();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed || state == AppLifecycleState.inactive) {
+      // Handle call disconnect or cleanup here
+      // call?.leaveRoom();  // Example method, adjust based on your SDK
+      // Get.back();
+      print("RESUMED");
+    }else{
+      print("state : $state");
+
+      Get.back();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(children: [
+    return WillPopScope(child: Scaffold(
+      body: Stack(
+        children: [
           ZegoUIKitPrebuiltCall(
-            appID: 856242764 /*input your AppID*/,
-            appSign: "4ef56426c1176809221d36f8d2a74ebbd463af80f25f961d7498650f8372816d" /*input your AppSign*/,
-            userID: uid,
-            userName: name,
-            callID: roomId,
-            config: ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall()
-              // ..onOnlySelfInRoom = (context) {
-              //   if (PrebuiltCallMiniOverlayPageState.idle != ZegoUIKitPrebuiltCallMiniOverlayMachine().state()) {
-              //     /// in minimizing
-              //     ZegoUIKitPrebuiltCallMiniOverlayMachine().changeState(PrebuiltCallMiniOverlayPageState.idle);
-              //   }
-              // }
-
-            /// support minimizing
-              ..topMenuBarConfig.isVisible = false
-              ..topMenuBarConfig.buttons = [
-                // ZegoMenuBarButtonName.minimizingButton,
-                // ZegoMenuBarButtonName.showMemberListButton,
-              ],
+            appID:  appId, // Consider fetching from a secure source
+            appSign: appSecret, // Consider fetching from a secure source
+            userID: widget.uid,
+            userName: widget.name,
+            callID: widget.roomId,
+            config: ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall(),
           ),
+        ],
+      ),
+    ), onWillPop: () async{return Future.value(false);
 
-        ]));
+    });
   }
 }

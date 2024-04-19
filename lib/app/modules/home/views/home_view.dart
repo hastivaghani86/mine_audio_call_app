@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:mine/app/modules/admin_user_wise_number/views/admin_user_wise_number_view.dart';
 import 'package:mine/app/routes/app_pages.dart';
 import 'package:mine/services/authentication_service.dart';
+import 'package:mine/services/notification_services/send_notification.dart';
 import 'package:mine/utils/app_key_storage.dart';
 import 'package:mine/utils/app_size_config.dart';
 import '../../../../agora/agora_video_call.dart';
@@ -117,6 +118,7 @@ class HomeView extends GetView<HomeController> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
+                                    sendFcmMessage((userData)["fcm"], "Calling From", (userData)["name"]);
                                     Get.to(()=>ZegoAudioCallView((userData)["id"], (userData)["name"], "test"));
                                     // Get.to(()=>AgoraVideoCallExa(remoteUid: /*(userData)["id"]*/123,));
                                     // Get.toNamed(Routes.CALLING);

@@ -11,6 +11,7 @@ class UserHomeController extends GetxController {
   @override
   void onInit() async{
     showIds =  await getUserShowIds();
+    update();
     print("SHOWID FOR USER : $showIds");
     super.onInit();
   }
